@@ -1,0 +1,83 @@
+*{
+    font-family: 'Lobster', cursive;
+    margin: 0;
+}
+
+.heading{
+    box-shadow: 0px 2px 3px 0px rgb(0 0 0 / 20%);
+    height: 60px;
+    place-items:center;
+}
+.heading h1{
+    margin: 0;
+    color: red;
+}
+
+.formStyle{
+    height: 20vh;
+}
+
+.formStyle input[type="text"]{
+    font-size: 25px;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+}
+.btn2{
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 2px solid black;
+    margin-right:10px ;
+}
+
+.btn2:hover{
+    cursor: pointer;
+}
+.lists li{
+    font-size:25px;
+    color:black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: capitalize;
+}
+
+.list-items{
+    height: 60vh;
+}
+
+.list-items h2{
+    font-size: 30px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left: 20px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: red;
+}
+
+.list-div{
+    display: grid;
+    grid-template-columns: 181px 50px 50px;
+    grid-template-rows: repeat(1,40px);
+    place-items: baseline;
+}
+
+.list-div ul li{
+    list-style: none;
+}
+
+.lists{
+    height: 400px;
+    width: 100%;
+}
+.lists table {
+    height: 60%;
+    width: 60%;
+    margin-left: 40px;
+    font-size: 20px;
+}
+.lists table thead tr th,tbody tr td{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}

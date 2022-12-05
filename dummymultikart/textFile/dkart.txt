@@ -1,0 +1,79 @@
+ // <nav className="navbar">
+    //   <h2>DKart</h2>
+    //   <ul>
+    //     {data.map((val,index) => {
+    //       return (
+    //         <li key={index}>
+    //           <a className="list_title">{Object.keys(val)} </a>
+    //           <div className="list_item">
+    //             <a href="#">Action</a>
+    //             <a href="#">Another action</a>
+    //             <a href="#">Something else here</a>
+    //           </div>
+    //         </li>
+    //       );
+    //     })}
+    //   </ul>
+    // </nav>
+    
+    
+    
+    
+     /* <>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand" href="#">D<b>Kart</b></a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    <a id="backNav" className='collapse'>back navbar > </a>
+    {data.map((val,index)=>{    
+     return ( <ul className="navbar-nav" key={index}>
+        <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle mx-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {Object.keys(val)}
+        </a>
+        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a className="dropdown-item" href="#">Action</a>
+          <a className="dropdown-item" href="#">Another action</a>
+          <a className="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      </ul>)
+})}
+    
+  </div>
+</nav>
+        </> */
+        
+        
+        /* .list_item{
+    background: white;
+    width: 100%;
+    /* display: flex; */
+    /* display: none;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+} */
+/* .navbar{
+    display: flex;
+    justify-content: space-evenly;
+}
+.navbar ul li{
+    width: 200px;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+}
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul{
+    display: flex;
+    width: 300px;
+} */ 

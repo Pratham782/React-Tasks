@@ -1,0 +1,79 @@
+[
+  {
+    "home": {
+      "new demos": ["tools", "christmas", "marketplace", "gym", "game", "marijuana", "jewellery", "pets", "metros"],
+      "clothing": ["fashion1", "fashion2", "fashion3", "kids"],
+      "basics": ["lookbook", "video", "parallax", "full page"],
+      "beauty": "beauty",
+      "electronic": ["electronic1", "electronic2"],
+      "furniture": "furniture",
+      "vegetables": "vegetables",
+      "watch": "watch",
+      "lights": "lights",
+      "goggles": "goggles",
+      "shoes": "goggles",
+      "bags": "bags",
+      "flowers": "flowers"
+    }
+  },
+  {
+    "shop": {
+      "left sidebar": "left sidebar",
+      "right sidebar": "right sidebar",
+      "no sidebar": "no sidebar",
+      "sidebar popup": "sidebar popup",
+      "metro": "metro",
+      "full width": "full width",
+      "3 grid": "3 grid",
+      "6 six": "3 grid",
+      "list view": "list view"
+    }
+  },
+  {
+    "products": {
+      "sidebar": ["center sidebar", "right sidebar", "left sidebar"],
+      "thumbnail image": ["left image", "right image", "image outside"],
+      "3-column": ["thumbnail left", "thumbnail right", "thumbnail"],
+      "4 image": "4 image",
+      "bundle product": "bundle product",
+      "sticky": "sticky",
+      "accordian": "accordian",
+      "image swatch": "image swatch"
+    }
+  },
+  {
+    "features": {
+      "portfolio": "portfolio",
+      "add to cart": "add to cart",
+      "theme element": "theme element",
+      "product element": "product element",
+      "email template": "product element"
+    }
+  },
+  {
+    "pages": {
+      "vendor": ["vendor deshboard", "vendor profile", "become vendor"],
+      "account": ["tools", "christmas", "marketplace", "gym", "game", "marijuana", "jewellery", "pets", "metros"],
+      "about-us": "about-us",
+      "search": "search",
+      "typography": "typography",
+      "review": "review",
+      "order-success": "order-success",
+      "compare": ["compare1", "compare2"],
+      "collection": "collection",
+      "lookbook": "lookbook",
+      "site-map": "site-map",
+      "404": "404",
+      "coming-soon": "coming-soon",
+      "FAQ": "FAQ"
+    }
+  },
+  {
+    "blog detail": {
+      "blog left sidebar": "blog left sidebar",
+      "blog right": "blog right",
+      "no sidebaa": "no sidebaa",
+      "blog detail": "blog detail"
+    }
+  }
+]
