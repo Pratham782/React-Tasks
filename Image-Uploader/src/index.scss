@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    list-style: none;
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+  }
+  .links {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+  }
+  .links:hover {
+    color: red;
+  }
+}
