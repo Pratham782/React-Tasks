@@ -43,9 +43,9 @@ export default class Interface extends PureComponent {
   render() {
     return (
       <>
-        <Header/>
-        <FormFields text ={this.state.text} change={this.handleChange} click={this.handleClick}/>
-        <Listitems delete={this.handleDeleteAll} setText={this.state.setText} checkValues={this.state.checkValues}/>
+        <Header />
+        <FormFields text={this.state.text} change={this.handleChange} click={this.handleClick} />
+        <Listitems delete={this.handleDeleteAll} setText={this.state.setText} checkValues={this.state.checkValues} />
       </>
     );
   }
