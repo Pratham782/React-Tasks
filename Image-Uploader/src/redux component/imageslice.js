@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  imgvalue: [],
+  value: [],
 };
 
 export const imageSlice = createSlice({
-  name: "imagedata",
+  name: "counter",
   initialState,
   reducers: {
-    imagearr: (state, action) => {
-      state.imgvalue.push = action.payload;
+    collectImage: (state, action) => {
+      state.value.push(action.payload);
     },
   },
 });
 
-export const { imagearr } = imageSlice.actions;
+export const { collectImage } = imageSlice.actions;
 
 export default imageSlice.reducer;
