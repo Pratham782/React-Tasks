@@ -4,7 +4,7 @@ import imageReducer from './redux component/imageslice';
 
 const store = configureStore({
   reducer: {
-    count:imageReducer
+    imageData:imageReducer
   },
 })
 

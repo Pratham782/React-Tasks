@@ -5,21 +5,25 @@ import Deleteproperties from "./Deleteproperties";
 import Resetproperties from "./Resetproperties";
 
 export default function Propertiesbtn() {
-  let imagedata = useSelector((state) => state.count.value);
+  let imagedatas = useSelector((state) => {
+    console.log(Object.values(state.imageData))
+    return state.imageData;
+  });
 
   useEffect(() => {
     let accordianBtn = document.querySelector(".accordion-button");
     let accordionDropdown = document.querySelector(".accordion-collapse");
-    if (imagedata.length > 0) {
+    
+    if (imagedatas.length > 0) {
       accordianBtn.classList.remove("collapsed");
       accordionDropdown.classList.add("show");
       accordianBtn.setAttribute("data-bs-toggle", "collapse");
-    } 
-    // else {
-    //   accordianBtn.classList.add("collapsed");
-    //   accordionDropdown.classList.remove("show");
-    //   accordianBtn.removeAttribute("data-bs-toggle", "collapse");
-    // }
+    }
+    else {
+      accordianBtn.classList.add("collapsed");
+      accordionDropdown.classList.remove("show");
+      accordianBtn.removeAttribute("data-bs-toggle", "collapse");
+    }
   });
   return (
     <>

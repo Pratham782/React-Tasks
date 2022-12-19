@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { collectMetadata } from "../../redux component/imageslice";
 
 export default function Addproperties() {
   let [properties, setproperties] = useState({
@@ -7,15 +9,16 @@ export default function Addproperties() {
     datatype: "number",
     defaultValue: "#00134",
   });
-  let [objArr, setObjArr] = useState([]);
+  let dispatch = useDispatch();
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(properties);
-    setObjArr((prev) => {
-      return [...prev, properties];
-    });
-    console.log(objArr);
+    // console.log(properties);
+    // setObjArr((prev) => {
+    //   return [...prev, properties];
+    // });
+    // console.log(objArr);
+    dispatch(collectMetadata(Object.assign({}, properties)));
   }
 
   function handleChangeText(e) {

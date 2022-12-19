@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 export default function Imagelist() {
-  let imagedata = useSelector((state) => state.count.value);
+  let imagedatas = useSelector((state) => state.imageData);
 
   function fun(id, e, value) {
     if (e.target.checked) {
@@ -15,8 +15,8 @@ export default function Imagelist() {
   return (
     <>
       <div className="image-section col-8">
-        {imagedata != null &&
-          imagedata.map((file) => {
+        {imagedatas != null &&
+          imagedatas.map((file) => {
             let value = Object.values(file);
             let imageData = value.map((val, index) => {
               return (

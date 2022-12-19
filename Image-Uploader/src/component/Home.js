@@ -1,16 +1,18 @@
 import { useDispatch } from "react-redux";
 import { collectImage } from "../redux component/imageslice";
 import Imagelist from "./Imagelist";
-import Propertiesbtn from './properties/Propertiesbtn';
+import Propertiesbtn from "./properties/Propertiesbtn";
 
 export default function Home() {
   let dispatch = useDispatch();
 
+  let id = 0;
   function getFiles(e) {
     let fil = e.target.files;
     let fileArray = Array.from(fil);
     let imageurl = fileArray.map((file, index) => {
-      return { id: index + 1, name: file.name, url: URL.createObjectURL(file) };
+      id++;
+      return { id: id, name: file.name, url: URL.createObjectURL(file) };
     });
     dispatch(collectImage(Object.assign({}, imageurl)));
   }
