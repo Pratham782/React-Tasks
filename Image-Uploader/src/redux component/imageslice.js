@@ -1,44 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const metastate = {
-//   trait_type: "",
-//   value: "",
-//   datatype: "number",
-//   defaultValue: "#00134",
-// };
-let getid = [];
-let stateIndex = [];
+// let idForLocalUse = [];
+// let ourStateIndex = [];
 
 export const imageSlice = createSlice({
-  name: "counter",
+  name: "collectdata",
   initialState: [],
   reducers: {
     collectImage: (state, action) => {
-      let actions = action.payload;
-      let value = Object.values(actions);
-      value.map((val) => {
-        getid.push(val.id);
-        val.metadata = new Array();
+      let imagesData = action.payload;
+      state.push(imagesData);
+      let imageObjectToValues = Object.values(imagesData);
+      imageObjectToValues.map((data) => {
+        idForLocalUse.push(data.id);
+        data.metadata = new Array();
       });
-      state.push(actions);
-      state.map((val, index) => {
-        stateIndex.push(index);
-        console.log(stateIndex.length);
-        if (stateIndex.length > 2) {
-          stateIndex.shift();
-        }
+      state.map((value, index) => {
+        ourStateIndex.push(index);
       });
     },
     collectMetadata: (state, action) => {
-      getid.map((val) => {
-        stateIndex.map((vas, index) => {
-          state[vas][val - 1].metadata.push(action.payload);
-        });
+      idForLocalUse.map((val) => {
+        state[0][val - 1].metadata.push(action.payload);
       });
     },
   },
 });
 
+export const imageDataSlice = createSlice({
+  name: "imageDataSlice",
+  initialState: {
+    imageData: [],
+    propertyConfig: [],
+  },
+  reducers: {
+    setImageData: (state, action) => {
+     state.imageData = [...state.imageData, action.payload]
+    },
+    setPropertyConfig: (state, action) => {
+      state.propertyConfig = action.payload
+    },
+  },
+});
+
 export const { collectImage, collectMetadata } = imageSlice.actions;
+export const { setImageData, setPropertyConfig } = imageDataSlice.actions;
 
 export default imageSlice.reducer;
+export const imageDataReducer = imageDataSlice.reducer

@@ -7,12 +7,12 @@ export default function Home() {
   let dispatch = useDispatch();
 
   let id = 0;
-  function getFiles(e) {
-    let fil = e.target.files;
-    let fileArray = Array.from(fil);
-    let imageurl = fileArray.map((file, index) => {
+  function getImagFiles(e) {
+    let file = e.target.files;
+    let fileArray = Array.from(file);
+    let imageurl = fileArray.map((files) => {
       id++;
-      return { id: id, name: file.name, url: URL.createObjectURL(file) };
+      return { id: id, name: files.name, url: URL.createObjectURL(files) };
     });
     dispatch(collectImage(Object.assign({}, imageurl)));
   }
@@ -21,7 +21,7 @@ export default function Home() {
     <div>
       <div className="btn-section m-3">
         <label className="btn btn-outline-dark custom-file-upload">
-          <input type="file" id="get-file" accept={".png,.jepg,.jpg"} onChange={getFiles} multiple />
+          <input type="file" id="get-file" accept={".png,.jepg,.jpg"} onChange={getImagFiles} multiple />
           +Upload Images
         </label>
         <button className="btn btn-outline-dark">Edit Data</button>
