@@ -1,23 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { collectMetadata, setPropertyConfig } from "../../redux component/imageslice";
+import { setPropertyConfig } from "../../redux component/imageDataSlice";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Addproperties() {
   let [properties, setProperties] = useState({
+    id: uuidv4(),
     trait_type: "",
     value: "",
-    datatype: "number",
-    defaultValue: "#00134",
+    datatype: "Datatype",
+    defaultValue: "default-value",
   });
   let dispatch = useDispatch();
-  let {propertyConfig} = useSelector((state) => state.imageDataReducer);
-  console.log('propertyConfig: ', propertyConfig);
-  
+  let { propertyConfig } = useSelector((state) => state.imageDataReducer);
+
+  // console.log("propertyConfig: ", propertyConfig);
+
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(collectMetadata(Object.assign({}, properties)));
-    //-----
-    dispatch(setPropertyConfig([...propertyConfig, properties]))
+    if (properties.trait_type !== "" && properties.value !== "") {
+      dispatch(setPropertyConfig([...propertyConfig, { ...properties, id: uuidv4() }]));
+      setProperties({ ...properties, trait_type: "", value: "" });
+    }
   }
 
   function handleChangePropertyName(e) {
@@ -44,11 +48,19 @@ export default function Addproperties() {
             aria-describedby="propertyHelp"
             placeholder="Enter Text Here"
             onChange={handleChangePropertyName}
+            value={properties.trait_type}
           />
         </div>
         <div className="form-group mb-2">
           <label htmlFor="proeprtyValue">Value</label>
-          <input type="text" className="form-control" id="proeprtyValue" placeholder="Enter Text Here" onChange={handleChangePropertyValue} />
+          <input
+            type="text"
+            className="form-control"
+            value={properties.value}
+            id="proeprtyValue"
+            placeholder="Enter Text Here"
+            onChange={handleChangePropertyValue}
+          />
         </div>
         <button type="submit" className="btn btn-dark">
           Submit
@@ -57,25 +69,3 @@ export default function Addproperties() {
     </>
   );
 }
-
-// let [obj, setobj] = useState([]);
-
-// useEffect(()=>{
-//   dispatch(collectMetadata(obj));
-// })
-
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   setobj([...obj,properties])
-// }
-
-// useEffect(() => {
-//   arr.map((value)=>{
-//   dispatch(collectMetadata(Object.assign({}, arr)));
-//   })
-// }, [det.length]);
-
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   setarr([...arr,properties]);
-// }

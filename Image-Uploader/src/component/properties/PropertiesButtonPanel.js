@@ -4,26 +4,26 @@ import Addproperties from "./Addproperties";
 import Deleteproperties from "./Deleteproperties";
 import Resetproperties from "./Resetproperties";
 
-export default function Propertiesbtn() {
+export default function PropertiesButtonPanel() {
   let imagedatas = useSelector((state) => {
-    console.log(Object.values(state.imageData))
-    return state.imageData;
+    let {imageData} = state.imageDataReducer;
+    return imageData;
   });
 
   useEffect(() => {
     let accordianBtn = document.querySelector(".accordion-button");
     let accordionDropdown = document.querySelector(".accordion-collapse");
     
-    if (imagedatas.length > 0) {
-      accordianBtn.classList.remove("collapsed");
-      accordionDropdown.classList.add("show");
-      accordianBtn.setAttribute("data-bs-toggle", "collapse");
-    }
-    else {
-      accordianBtn.classList.add("collapsed");
-      accordionDropdown.classList.remove("show");
-      accordianBtn.removeAttribute("data-bs-toggle", "collapse");
-    }
+    // if (imagedatas != null && imagedatas.length > 0) {
+    //   accordianBtn.classList.remove("collapsed");
+    //   accordionDropdown.classList.add("show");
+    //   accordianBtn.setAttribute("data-bs-toggle", "collapse");
+    // }
+    // else {
+    //   accordianBtn.classList.add("collapsed");
+    //   accordionDropdown.classList.remove("show");
+    //   accordianBtn.removeAttribute("data-bs-toggle", "collapse");
+    // }
   });
   return (
     <>
@@ -53,7 +53,7 @@ export default function Propertiesbtn() {
               <button
                 className="accordion-button collapsed"
                 type="button"
-                // data-bs-toggle="collapse"
+                data-bs-toggle="collapse"
                 data-bs-target="#collapseTwo"
                 aria-expanded="false"
                 aria-controls="collapseTwo"
@@ -72,7 +72,7 @@ export default function Propertiesbtn() {
               <button
                 className="accordion-button collapsed"
                 type="button"
-                // data-bs-toggle="collapse"
+                data-bs-toggle="collapse"
                 data-bs-target="#collapseThree"
                 aria-expanded="false"
                 aria-controls="collapseThree"

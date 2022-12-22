@@ -29,6 +29,8 @@ input[type="file"] {
   border: 2px solid black;
   padding: 10px;
   margin-top: 10px;
+  overflow: scroll;
+  height: 90vh;
 }
 .accordion-button::after {
   display: none !important;
@@ -36,4 +38,31 @@ input[type="file"] {
 
 .accordion-button:not(.collapsed) {
   color: black !important;
+}
+
+.edit-data-outer-section {
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  display: none;
+  text-align: center;
+  background-color: rgba($color: #000000, $alpha: 0.1);
+
+  .edit-data-section {
+    height: 600px;
+    width: 500px;
+    background-color: white;
+    border: 1px solid black;
+    transform: translate(100%, 10%);
+  }
+}
+
+.show {
+  display: block;
+}
+
+::-webkit-scrollbar{
+  display: none;
 }
