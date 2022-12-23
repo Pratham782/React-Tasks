@@ -11,7 +11,12 @@ export default function EditDataSection() {
   });
 
   function handleButtonSubmittionData() {
-    dispatch(editPropertyData({ value: editedInputFieldValue.value, changedPropertyDataId: editedInputFieldValue.changedPropertyDataId }));
+    dispatch(
+      editPropertyData({
+        value: editedInputFieldValue.value,
+        changedPropertyDataId: editedInputFieldValue.changedPropertyDataId,
+      })
+    );
   }
 
   function handleEditData() {

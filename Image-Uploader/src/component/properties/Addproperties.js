@@ -14,8 +14,6 @@ export default function Addproperties() {
   let dispatch = useDispatch();
   let { propertyConfig } = useSelector((state) => state.imageDataReducer);
 
-  // console.log("propertyConfig: ", propertyConfig);
-
   function handleSubmit(event) {
     event.preventDefault();
     if (properties.trait_type !== "" && properties.value !== "") {
