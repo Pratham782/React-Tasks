@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editPropertyData } from "../redux component/imageDataSlice";
 
 export default function EditDataSection() {
-  let { propertyConfig, editedData } = useSelector((state) => state.imageDataReducer);
+  let { propertyConfig } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
   let [editedInputFieldValue, setInputFieldValue] = useState({
     changedPropertyDataId: "",
@@ -11,12 +11,14 @@ export default function EditDataSection() {
   });
 
   function handleButtonSubmittionData() {
-    dispatch(
-      editPropertyData({
-        value: editedInputFieldValue.value,
-        changedPropertyDataId: editedInputFieldValue.changedPropertyDataId,
-      })
-    );
+    console.log(editedInputFieldValue);
+    // dispatch(
+    //   editPropertyData({
+    //     value: editedInputFieldValue.value,
+    //     changedPropertyDataId: editedInputFieldValue.changedPropertyDataId,
+    //   })
+    // );
+    setInputFieldValue({ changedPropertyDataId: "", value: "" });
   }
 
   function handleEditData() {
@@ -56,6 +58,7 @@ export default function EditDataSection() {
                         className=""
                         onChange={(e) => handleInputData(e, proepertyData.id)}
                         placeholder="                           Value         "
+                        value={editedInputFieldValue.value}
                       />
                       <div style={{ textAlign: "end" }} className="mt-2">
                         <input type="checkbox" />
@@ -75,7 +78,9 @@ export default function EditDataSection() {
             <button className="btn btn-outline-dark" onClick={handleButtonSubmittionData}>
               Save
             </button>
-            <button className="btn btn-outline-dark">Cancel</button>
+            <button className="btn btn-outline-dark" onClick={closeButtonOfEditdata}>
+              Cancel
+            </button>
           </div>
         </div>
       </div>

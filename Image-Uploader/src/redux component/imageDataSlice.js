@@ -1,4 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
+import {produce} from 'immer';
+
 
 let initialState = {
   imageData: [],
@@ -10,7 +12,10 @@ export const imageDataSlice = createSlice({
   initialState,
   reducers: {
     setImageData: (state, action) => {
-      state.imageData = action.payload;
+      return {
+        ...state,
+        imageData: state.imageData.concat(action.payload),
+      };
     },
     setPropertyConfig: (state, action) => {
       state.propertyConfig = action.payload;
@@ -18,29 +23,8 @@ export const imageDataSlice = createSlice({
     setPropertyToImageData: (state, action) => {
       state.imageData != null &&
         state.imageData.map((imageData) => {
-          imageData.map((data) => {
-            data.metadata = action.payload;
-          });
+          imageData.metadata = action.payload;
         });
-    },
-    editPropertyData: (state, action) => {
-      let { getId, value, changedPropertyDataId } = action.payload;
-      let existing = state.imageData.map((value) => {
-        return value.find((vals) => {
-          return vals.id == getId;
-        });
-      });
-      if (existing) {
-        let newData = existing.map((value) => {
-          let { metadata } = value;
-          metadata.find((vals) => {
-            console.log(vals.id == changedPropertyDataId);
-          });
-        });
-        if (newData) {
-          console.log(newData);
-        }
-      }
     },
     resetPropertyData: (state, action) => {
       let { trait_type, defaultValue } = action.payload;
@@ -49,26 +33,66 @@ export const imageDataSlice = createSlice({
         existingUser.value = defaultValue;
       }
     },
-    deletePropertyData: (state, action) => {
-      let { trait_type } = action.payload;
-      let [dataImageData] = state.imageData;
-      let existingUser = dataImageData.find((data) => {
-        let [metadataValue] = data.metadata;
-        return metadataValue.trait_type == trait_type;
+    deleteAllPropertyData: (state, action) => {
+      return {
+        ...state,
+        propertyConfig: state.propertyConfig.filter((propertyData) => {
+          return propertyData.trait_type !== action.payload.trait_type;
+        }),
+      };
+    },
+    deleteIndividualPropertyData: (state, action) => {
+      let individualImageDivId = action.payload;
+      return {
+        ...state,
+        imageData: state.imageData.filter((imageObjData) => {
+          return imageObjData.id !== individualImageDivId;
+        }),
+      };
+    },
+    editPropertyData: (state, action) => {
+      let { getId, value, changedPropertyDataId } = action.payload;
+      let update = [];
+      let existing = state.imageData.map((values) => {
+        if(values.id == getId){
+          update.push(true)
+        }
       });
-      if (existingUser) {
-        state.imageData.filter((imagedata) => {
-          let [value] = imagedata;
-          return value.metadata.map((val) => {
-            return val.trait_type !== trait_type;
-          });
-        });
-      }
+      console.log(update)
+      // if (existing) {
+      //   let newData = existing.map((value) => {
+      //     let { metadata } = value;
+      //     metadata.find((vals) => {
+      //       console.log(vals.id == changedPropertyDataId);
+      //     });
+      //   });
+      //   if (newData) {
+      //     console.log(newData);
+      //   }
+      // }
+      // return {
+      //   ...state,
+      //   imageData : state.imageData.map((imageData)=>{
+      //     let getImageObjectValue = Object.values(imageData);
+      //     let datas = getImageObjectValue.map((objectData) => {
+      //       if(objectData.trait_type !== trait_type){
+      //         return {...objectData,}
+      //       }
+      //     });
+      //     return datas
+      //   })
     },
   },
 });
 
-export const { setImageData, setPropertyConfig, resetPropertyData, editPropertyData, deletePropertyData, setPropertyToImageData } =
-  imageDataSlice.actions;
+export const {
+  setImageData,
+  setPropertyConfig,
+  resetPropertyData,
+  editPropertyData,
+  deleteAllPropertyData,
+  setPropertyToImageData,
+  deleteIndividualPropertyData,
+} = imageDataSlice.actions;
 
 export const imageDataReducer = imageDataSlice.reducer;

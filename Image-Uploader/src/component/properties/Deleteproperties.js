@@ -1,26 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deletePropertyData } from "../../redux component/imageDataSlice";
+import { deleteAllPropertyData } from "../../redux component/imageDataSlice";
 
 export default function Deleteproperties() {
-  let { propertyConfig, imageData } = useSelector((state) => state.imageDataReducer);
+  let { propertyConfig } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
 
   function submitSelectedData() {
     let selectedDeleteOptions = document.getElementById("chooseDeleteOption").value;
 
-    imageData != null &&
-      imageData.map((dataImageData) => {
-        dataImageData.map((data) => {
-          let [metadataValue] = data.metadata;
-          let propertyName = metadataValue.trait_type;
-          if (selectedDeleteOptions == propertyName) {
-            dispatch(
-              deletePropertyData({
-                trait_type: propertyName,
-              })
-            );
-          }
-        });
+    propertyConfig != null &&
+      propertyConfig.map((propertiesData) => {
+        let propertyName = propertiesData.trait_type;
+        if (selectedDeleteOptions == propertyName) {
+          dispatch(deleteAllPropertyData({ trait_type: propertyName }));
+        }
       });
   }
   return (

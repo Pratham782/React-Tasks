@@ -9,7 +9,7 @@ export default function Addproperties() {
     trait_type: "",
     value: "",
     datatype: "Datatype",
-    defaultValue: "default-value",
+    defaultValue: "",
   });
   let dispatch = useDispatch();
   let { propertyConfig } = useSelector((state) => state.imageDataReducer);
@@ -18,7 +18,7 @@ export default function Addproperties() {
     event.preventDefault();
     if (properties.trait_type !== "" && properties.value !== "") {
       dispatch(setPropertyConfig([...propertyConfig, { ...properties, id: uuidv4() }]));
-      setProperties({ ...properties, trait_type: "", value: "" });
+      setProperties({ ...properties, trait_type: "", value: "", defaultValue: "" });
     }
   }
 
@@ -31,6 +31,12 @@ export default function Addproperties() {
   function handleChangePropertyValue(e) {
     setProperties((properties) => {
       return { ...properties, value: e.target.value };
+    });
+  }
+
+  function handleChangePropertyDefaultValue(e) {
+    setProperties((properties) => {
+      return { ...properties, defaultValue: e.target.value };
     });
   }
 
@@ -58,6 +64,17 @@ export default function Addproperties() {
             id="proeprtyValue"
             placeholder="Enter Text Here"
             onChange={handleChangePropertyValue}
+          />
+        </div>
+        <div className="form-group mb-2">
+          <label htmlFor="proeprtyValue">Default Value</label>
+          <input
+            type="text"
+            className="form-control"
+            value={properties.defaultValue}
+            id="proeprtyValue"
+            placeholder="Enter Text Here"
+            onChange={handleChangePropertyDefaultValue}
           />
         </div>
         <button type="submit" className="btn btn-dark">
