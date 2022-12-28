@@ -1,24 +1,28 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPropertyToImageData, editPropertyData,deleteIndividualPropertyData } from "../redux component/imageDataSlice";
+import { setPropertyToImageData, editPropertyData, deleteIndividualPropertyData, setCheckedAndEditedData } from "../redux component/imageDataSlice";
 
 export default function ShowImageDatas() {
-  let { imageData, propertyConfig, editedData } = useSelector((state) => state.imageDataReducer);
+  let { imageData, propertyConfig, individualPropertyForImageData } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
-  dispatch(setPropertyToImageData(propertyConfig));
+
+  useEffect(() => {
+    dispatch(setPropertyToImageData(individualPropertyForImageData));
+  }, []);
 
   function handleCheckboxData(id, e, value) {
     if (e.target.checked) {
       if (id === value.id) {
         // let {value,changePropertyDataId} = editedData
-        dispatch(editPropertyData({ getId: id }));
+        dispatch(setCheckedAndEditedData({ getId: id }));
       }
     }
   }
 
   function handleDelete(id) {
-    dispatch(deleteIndividualPropertyData(id))
+    dispatch(deleteIndividualPropertyData(id));
   }
-  
+
   return (
     <>
       <div className="image-section col-8">

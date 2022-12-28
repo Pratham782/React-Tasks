@@ -1,24 +1,32 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editPropertyData } from "../redux component/imageDataSlice";
+import { setCheckedAndEditedData, editPropertyData } from "../redux component/imageDataSlice";
 
 export default function EditDataSection() {
-  let { propertyConfig } = useSelector((state) => state.imageDataReducer);
+  let { propertyConfig,checkedId } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
   let [editedInputFieldValue, setInputFieldValue] = useState({
     changedPropertyDataId: "",
-    value: "",
+    newPropertyValue: "",
   });
 
   function handleButtonSubmittionData() {
-    console.log(editedInputFieldValue);
     // dispatch(
     //   editPropertyData({
     //     value: editedInputFieldValue.value,
     //     changedPropertyDataId: editedInputFieldValue.changedPropertyDataId,
     //   })
     // );
-    setInputFieldValue({ changedPropertyDataId: "", value: "" });
+
+    checkedId.map((id)=>{
+    dispatch(
+      editPropertyData({
+        changedPropertyDataId: editedInputFieldValue.changedPropertyDataId,
+        newPropertyValue: editedInputFieldValue.newPropertyValue,
+        getId:id
+      })
+    );
+  })
   }
 
   function handleEditData() {
@@ -31,7 +39,7 @@ export default function EditDataSection() {
   }
 
   function handleInputData(e, id) {
-    setInputFieldValue({ value: e.target.value, changedPropertyDataId: id });
+    setInputFieldValue({ newPropertyValue: e.target.value, changedPropertyDataId: id });
   }
   return (
     <>
@@ -58,7 +66,7 @@ export default function EditDataSection() {
                         className=""
                         onChange={(e) => handleInputData(e, proepertyData.id)}
                         placeholder="                           Value         "
-                        value={editedInputFieldValue.value}
+                        // value={editedInputFieldValue.newPropertyValue}
                       />
                       <div style={{ textAlign: "end" }} className="mt-2">
                         <input type="checkbox" />

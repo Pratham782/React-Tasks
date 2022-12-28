@@ -1,15 +1,9 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import Addproperties from "./Addproperties";
-import Deleteproperties from "./Deleteproperties";
-import Resetproperties from "./Resetproperties";
+import AddProperties from "./AddProperties";
+import DeleteProperties from "./DeleteProperties";
+import ResetProperties from "./ResetProperties";
 
 export default function PropertiesButtonPanel() {
-  let imagedatas = useSelector((state) => {
-    let { imageData } = state.imageDataReducer;
-    return imageData;
-  });
-
   // useEffect(() => {
   //   let accordianBtn = document.querySelector(".accordion-button");
   //   let accordionDropdown = document.querySelector(".accordion-collapse");
@@ -24,6 +18,7 @@ export default function PropertiesButtonPanel() {
   //   //   accordionDropdown.classList.remove("show");
   //   //   accordianBtn.removeAttribute("data-bs-toggle", "collapse");
   //   // }
+
   // });
   return (
     <>
@@ -44,7 +39,7 @@ export default function PropertiesButtonPanel() {
             </h2>
             <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                <Addproperties />
+                <AddProperties />
               </div>
             </div>
           </div>
@@ -63,7 +58,7 @@ export default function PropertiesButtonPanel() {
             </h2>
             <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                <Resetproperties />
+                <ResetProperties />
               </div>
             </div>
           </div>
@@ -82,7 +77,7 @@ export default function PropertiesButtonPanel() {
             </h2>
             <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                <Deleteproperties />
+                <DeleteProperties />
               </div>
             </div>
           </div>

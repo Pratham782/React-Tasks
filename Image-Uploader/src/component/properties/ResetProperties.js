@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { resetPropertyData } from "../../redux component/imageDataSlice";
 
-export default function Resetproperties() {
+export default function ResetProperties() {
   let { propertyConfig } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
 
