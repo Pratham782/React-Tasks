@@ -1,13 +1,11 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
-
 let initialState = {
   imageData: [],
   propertyConfig: [],
   checkedId: [],
   individualPropertyForImageData: [],
 };
-
 
 export const imageDataSlice = createSlice({
   name: "imageDataSlice",
@@ -21,13 +19,11 @@ export const imageDataSlice = createSlice({
     },
     setPropertyConfig: (state, action) => {
       state.propertyConfig = action.payload;
-      // state.individualPropertyForImageData = state.propertyConfig.map((objValue) => ({ ...objValue })); //deep copy property Config
-      state.individualPropertyForImageData = JSON.parse(JSON.stringify(state.propertyConfig));
     },
-    setPropertyToImageData: (state, action) => {
+    setPropertyToImageData: (state) => {
       state.imageData != null &&
         state.imageData.map((imageData) => {
-          imageData.metadata = action.payload;
+          imageData.metadata = state.propertyConfig.map((innerImageObject) => ({ ...innerImageObject }));
         });
     },
     resetPropertyData: (state, action) => {
@@ -55,25 +51,13 @@ export const imageDataSlice = createSlice({
       };
     },
     setCheckedAndEditedData: (state, action) => {
-      return {
-        ...state,
-        checkedId: state.checkedId.concat(action.payload.getId),
-      };
+      return { ...state, checkedId: [...state.checkedId, action.payload.getId] };
+    },
+    removeCheckedAndEditedData: (state, action) => {
+      return { ...state, checkedId: state.checkedId.filter((getId) => getId !== action.payload) };
     },
     editPropertyData: (state, action) => {
       let { getId, newPropertyValue, changedPropertyDataId } = action.payload;
-      // state.imageData = state.imageData.map((imageDatas, index) => {
-      //   if (imageDatas.id !== getId) return imageDatas.id;
-
-      //   const metadata = imageDatas.metadata.map((metadataValues, innerIndex) => {
-      //     if (metadataValues.id !== changedPropertyDataId) return metadataValues;
-      //     return Object.assign({}, metadataValues, { value: newPropertyValue });
-      //   });
-
-      //   return Object.assign({}, imageDatas, { metadata });
-      // });
-
-      // return Object.assign({}, state , state.imageData);
       return {
         ...state,
         imageData: state.imageData.map((content, i) =>
@@ -100,6 +84,7 @@ export const {
   setPropertyToImageData,
   deleteIndividualPropertyData,
   setCheckedAndEditedData,
+  removeCheckedAndEditedData,
 } = imageDataSlice.actions;
 
 export const imageDataReducer = imageDataSlice.reducer;
@@ -165,3 +150,10 @@ export const imageDataReducer = imageDataSlice.reducer;
 //     }
 //   }),
 // };
+
+// state.individualPropertyForImageData = state.propertyConfig.map((objValue) => ({ ...objValue })); //deep copy property Config
+// state.individualPropertyForImageData = JSON.parse(JSON.stringify(state.propertyConfig));
+// state.imageData != null &&
+//   state.imageData.map((imageData) => {
+//     imageData.metadata = state.individualPropertyForImageData;
+//   });

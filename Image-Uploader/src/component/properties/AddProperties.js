@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setImageData, setPropertyConfig, setPropertyToImageData } from "../../redux component/imageDataSlice";
+import { setPropertyConfig } from "../../redux component/imageDataSlice";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AddProperties() {
@@ -12,15 +12,14 @@ export default function AddProperties() {
     defaultValue: "",
   });
   let dispatch = useDispatch();
- 
+
   let { propertyConfig, individualPropertyForImageData } = useSelector((state) => state.imageDataReducer);
-  
+
   function handleSubmit(event) {
     event.preventDefault();
     if (properties.trait_type !== "" && properties.value !== "") {
       dispatch(setPropertyConfig([...propertyConfig, { ...properties, id: uuidv4() }]));
       setProperties({ ...properties, trait_type: "", value: "", defaultValue: "" });
-      
     }
   }
 

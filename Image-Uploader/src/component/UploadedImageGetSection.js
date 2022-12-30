@@ -19,7 +19,6 @@ export default function UploadedImageGetSection() {
       let sliceDisplayName = displayName.slice(0, 10);
       return { id: uuidv4(), name: sliceDisplayName, url: URL.createObjectURL(files) };
     });
-    console.log();
     dispatch(setImageData(imageFileUrlData));
   }
 

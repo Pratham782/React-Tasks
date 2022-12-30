@@ -1,21 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPropertyToImageData, editPropertyData, deleteIndividualPropertyData, setCheckedAndEditedData } from "../redux component/imageDataSlice";
+import {
+  setPropertyToImageData,
+  setCheckedAndEditedData,
+  deleteIndividualPropertyData,
+  removeCheckedAndEditedData,
+} from "../redux component/imageDataSlice";
 
 export default function ShowImageDatas() {
-  let { imageData, propertyConfig, individualPropertyForImageData } = useSelector((state) => state.imageDataReducer);
+  let { imageData, propertyConfig, checkedId } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPropertyToImageData(individualPropertyForImageData));
-  }, []);
+    dispatch(setPropertyToImageData());
+  }, [propertyConfig]);
 
   function handleCheckboxData(id, e, value) {
     if (e.target.checked) {
       if (id === value.id) {
-        // let {value,changePropertyDataId} = editedData
         dispatch(setCheckedAndEditedData({ getId: id }));
       }
+    } else {
+      checkedId.map((dataId) => {
+        dispatch(removeCheckedAndEditedData(dataId));
+      });
     }
   }
 
@@ -27,7 +35,7 @@ export default function ShowImageDatas() {
     <>
       <div className="image-section col-8">
         <div className="d-flex justify-content-end text-uppercase">
-          <div className="d-flex align-items-center justify-content-around" style={{ width: "65%" }}>
+          <div className="d-flex align-items-center justify-content-around" style={{ width: "92%" }}>
             {propertyConfig.map((propertyData) => {
               return <h6>{propertyData.trait_type}</h6>;
             })}
