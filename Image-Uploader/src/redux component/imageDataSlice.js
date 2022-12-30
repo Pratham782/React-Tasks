@@ -14,7 +14,7 @@ export const imageDataSlice = createSlice({
     setImageData: (state, action) => {
       return {
         ...state,
-        imageData: state.imageData.concat(action.payload),
+        imageData: state.imageData.concat(action.payload.imageDataObj),
       };
     },
     setPropertyConfig: (state, action) => {
@@ -88,72 +88,3 @@ export const {
 } = imageDataSlice.actions;
 
 export const imageDataReducer = imageDataSlice.reducer;
-
-// let update = [];
-// let existing = state.imageData.map((values) => {
-//   if(values.id == getId){
-//     update.push(true)
-//   }
-// });
-// console.log(update)
-// if (existing) {
-//   let newData = existing.map((value) => {
-//     let { metadata } = value;
-//     metadata.find((vals) => {
-//       console.log(vals.id == changedPropertyDataId);
-//     });
-//   });
-//   if (newData) {
-//     console.log(newData);
-//   }
-// }
-// return {
-//   ...state,
-//   imageData : state.imageData.map((imageData)=>{
-//     let getImageObjectValue = Object.values(imageData);
-//     let datas = getImageObjectValue.map((objectData) => {
-//       if(objectData.trait_type !== trait_type){
-//         return {...objectData,}
-//       }
-//     });
-//     return datas
-//   })
-
-// return produce((state, draftState) => {
-//   let [imageData] = draftState.imageData;
-//   // if (outerObject.id === outerObjectId) {
-//   //   const innerArray = outerObject.innerArray;
-//   //   const innerArrayItem = innerArray.find(item => item.id === innerArrayItemId);
-//   //   if (innerArrayItem) {
-//   //     innerArrayItem.property = newPropertyValue;
-//   //   }
-//   // }
-
-//   if (imageData.id == getId) {
-//     const metadataInnerArray = imageData.metadata;
-//     const innerArrayPropertyItem = metadataInnerArray.find((item) => item.id == changedPropertyDataId);
-//     if (innerArrayPropertyItem) {
-//       innerArrayPropertyItem.value = "redd";
-//     }
-//   }
-// });
-// return {
-//   ...state,
-//   imageData: state.imageData.map((imageData) => {
-//     console.log(imageData.id === getId);
-//     if (imageData.id === getId) {
-//       const metadataInnerArray = imageData.metadata;
-//       const innerArrayPropertyItem = metadataInnerArray.find((item) => item.id === changedPropertyDataId);
-//       if (innerArrayPropertyItem) {
-//         return[...innerArrayPropertyItem,{value:newPropertyValue}];
-//       }
-//     }
-//   }),
-// };
-
-// state.individualPropertyForImageData = state.propertyConfig.map((objValue) => ({ ...objValue })); //deep copy property Config
-// state.individualPropertyForImageData = JSON.parse(JSON.stringify(state.propertyConfig));
-// state.imageData != null &&
-//   state.imageData.map((imageData) => {
-//     imageData.metadata = state.individualPropertyForImageData;
-//   });

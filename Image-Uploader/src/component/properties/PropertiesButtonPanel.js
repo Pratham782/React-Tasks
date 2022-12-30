@@ -4,22 +4,7 @@ import DeleteProperties from "./DeleteProperties";
 import ResetProperties from "./ResetProperties";
 
 export default function PropertiesButtonPanel() {
-  // useEffect(() => {
-  //   let accordianBtn = document.querySelector(".accordion-button");
-  //   let accordionDropdown = document.querySelector(".accordion-collapse");
-
-  //   // if (imagedatas != null && imagedatas.length > 0) {
-  //   //   accordianBtn.classList.remove("collapsed");
-  //   //   accordionDropdown.classList.add("show");
-  //   //   accordianBtn.setAttribute("data-bs-toggle", "collapse");
-  //   // }
-  //   // else {
-  //   //   accordianBtn.classList.add("collapsed");
-  //   //   accordionDropdown.classList.remove("show");
-  //   //   accordianBtn.removeAttribute("data-bs-toggle", "collapse");
-  //   // }
-
-  // });
+  
   return (
     <>
       <div className="col-4">

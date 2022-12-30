@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCheckedAndEditedData, editPropertyData, setPropertyToImageData } from "../redux component/imageDataSlice";
+import { editPropertyData } from "../redux component/imageDataSlice";
 
 export default function EditDataSection() {
-  let { propertyConfig, checkedId, imageData } = useSelector((state) => state.imageDataReducer);
+  let { propertyConfig, checkedId } = useSelector((state) => state.imageDataReducer);
   let dispatch = useDispatch();
   let [editedInputFieldValue, setInputFieldValue] = useState({
     changedPropertyDataId: " ",
     newPropertyValue: " ",
   });
 
-  // useEffect(() => {
-  //   dispatch(setPropertyToImageData())
-  // }, [propertyConfig]);
-
   function handleButtonSubmittionData() {
-    // dispatch(
-    //   editPropertyData({
-    //     value: editedInputFieldValue.value,
-    //     changedPropertyDataId: editedInputFieldValue.changedPropertyDataId,
-    //   })
-    // );
 
     checkedId.map((id) => {
       dispatch(

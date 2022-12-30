@@ -13,7 +13,7 @@ export default function AddProperties() {
   });
   let dispatch = useDispatch();
 
-  let { propertyConfig, individualPropertyForImageData } = useSelector((state) => state.imageDataReducer);
+  let { propertyConfig } = useSelector((state) => state.imageDataReducer);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -54,6 +54,7 @@ export default function AddProperties() {
             placeholder="Enter Text Here"
             onChange={handleChangePropertyName}
             value={properties.trait_type}
+            autoComplete="off"
           />
         </div>
         <div className="form-group mb-2">
@@ -65,6 +66,7 @@ export default function AddProperties() {
             id="proeprtyValue"
             placeholder="Enter Text Here"
             onChange={handleChangePropertyValue}
+            autoComplete="off"
           />
         </div>
         <div className="form-group mb-2">
@@ -76,6 +78,7 @@ export default function AddProperties() {
             id="proeprtyValue"
             placeholder="Enter Text Here"
             onChange={handleChangePropertyDefaultValue}
+            autoComplete="off"
           />
         </div>
         <button type="submit" className="btn btn-dark">
